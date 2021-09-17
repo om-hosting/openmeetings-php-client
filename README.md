@@ -287,5 +287,5 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-dev@openmeetings.apache.org
+Sebastian Wagner https://om-hosting.com
 
