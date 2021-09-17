@@ -282,7 +282,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+Authentication token is acquired via calling [**UserServiceApi->login**](docs/Api/UserServiceApi.md#login)
 
 
 ## Author
