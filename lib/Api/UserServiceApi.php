@@ -288,7 +288,7 @@ class UserServiceApi
 
         // form params
         if ($user !== null) {
-            $formParams['user'] = ObjectSerializer::toFormValue($user);
+            $formParams['user'] = $user->__toString();
         }
         // form params
         if ($confirm !== null) {
@@ -1249,7 +1249,7 @@ class UserServiceApi
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content->serviceResult, $returnType, []),
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
@@ -1369,7 +1369,7 @@ class UserServiceApi
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = false;
+        $multipart = true;
 
         // query params
         if ($sid !== null) {
@@ -1379,11 +1379,11 @@ class UserServiceApi
 
         // form params
         if ($user !== null) {
-            $formParams['user'] = ObjectSerializer::toFormValue($user);
+            $formParams['user'] = $user->__toString();
         }
         // form params
         if ($options !== null) {
-            $formParams['options'] = ObjectSerializer::toFormValue($options);
+            $formParams['options'] = $options->__toString();
         }
         // body params
         $_tempBody = null;
@@ -1519,7 +1519,7 @@ class UserServiceApi
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content->serviceResult, $returnType, []),
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
