@@ -2,6 +2,7 @@
     "name": "om-hosting/openmeetings-php-client",
     "description": "OpenMeetings PHP package to expose OpenMeetings Rest API - see https://openmeetings.apache.org/swagger/",
     "keywords": [
+        "openmeetings",
         "swagger",
         "php",
         "sdk",
