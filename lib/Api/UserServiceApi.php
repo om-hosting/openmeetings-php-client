@@ -1181,16 +1181,16 @@ class UserServiceApi
      * Operation getRoomHash
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomOptionsDTO $options options (optional)
      * @param  \Swagger\Client\Model\ExternalUserDTO $user user (optional)
+     * @param  \Swagger\Client\Model\RoomOptionsDTO $options options (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ServiceResultWrapper
      */
-    public function getRoomHash($sid, $options = null, $user = null)
+    public function getRoomHash($sid, $user = null, $options = null)
     {
-        list($response) = $this->getRoomHashWithHttpInfo($sid, $options, $user);
+        list($response) = $this->getRoomHashWithHttpInfo($sid, $user, $options);
         return $response;
     }
 
@@ -1198,17 +1198,17 @@ class UserServiceApi
      * Operation getRoomHashWithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
+     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRoomHashWithHttpInfo($sid, $options = null, $user = null)
+    public function getRoomHashWithHttpInfo($sid, $user = null, $options = null)
     {
         $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
-        $request = $this->getRoomHashRequest($sid, $options, $user);
+        $request = $this->getRoomHashRequest($sid, $user, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1275,15 +1275,15 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
+     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomHashAsync($sid, $options = null, $user = null)
+    public function getRoomHashAsync($sid, $user = null, $options = null)
     {
-        return $this->getRoomHashAsyncWithHttpInfo($sid, $options, $user)
+        return $this->getRoomHashAsyncWithHttpInfo($sid, $user, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1297,16 +1297,16 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
+     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomHashAsyncWithHttpInfo($sid, $options = null, $user = null)
+    public function getRoomHashAsyncWithHttpInfo($sid, $user = null, $options = null)
     {
         $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
-        $request = $this->getRoomHashRequest($sid, $options, $user);
+        $request = $this->getRoomHashRequest($sid, $user, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1349,13 +1349,13 @@ class UserServiceApi
      * Create request for operation 'getRoomHash'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
+     * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRoomHashRequest($sid, $options = null, $user = null)
+    protected function getRoomHashRequest($sid, $user = null, $options = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -1378,12 +1378,12 @@ class UserServiceApi
 
 
         // form params
-        if ($options !== null) {
-            $formParams['options'] = $options->__toString();
-        }
-        // form params
         if ($user !== null) {
             $formParams['user'] = $user->__toString();
+        }
+        // form params
+        if ($options !== null) {
+            $formParams['options'] = $options->__toString();
         }
         // body params
         $_tempBody = null;

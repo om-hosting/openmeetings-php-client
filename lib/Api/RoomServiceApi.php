@@ -90,15 +90,15 @@ class RoomServiceApi
      * Operation add2
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomBody $body body (optional)
+     * @param  \Swagger\Client\Model\RoomDTO $room room (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\RoomDTOWrapper
      */
-    public function add2($sid, $body = null)
+    public function add2($sid, $room = null)
     {
-        list($response) = $this->add2WithHttpInfo($sid, $body);
+        list($response) = $this->add2WithHttpInfo($sid, $room);
         return $response;
     }
 
@@ -106,16 +106,16 @@ class RoomServiceApi
      * Operation add2WithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomBody $body (optional)
+     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\RoomDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function add2WithHttpInfo($sid, $body = null)
+    public function add2WithHttpInfo($sid, $room = null)
     {
         $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
-        $request = $this->add2Request($sid, $body);
+        $request = $this->add2Request($sid, $room);
 
         try {
             $options = $this->createHttpClientOption();
@@ -182,14 +182,14 @@ class RoomServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomBody $body (optional)
+     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add2Async($sid, $body = null)
+    public function add2Async($sid, $room = null)
     {
-        return $this->add2AsyncWithHttpInfo($sid, $body)
+        return $this->add2AsyncWithHttpInfo($sid, $room)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -203,15 +203,15 @@ class RoomServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomBody $body (optional)
+     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add2AsyncWithHttpInfo($sid, $body = null)
+    public function add2AsyncWithHttpInfo($sid, $room = null)
     {
         $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
-        $request = $this->add2Request($sid, $body);
+        $request = $this->add2Request($sid, $room);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,12 +254,12 @@ class RoomServiceApi
      * Create request for operation 'add2'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomBody $body (optional)
+     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function add2Request($sid, $body = null)
+    protected function add2Request($sid, $room = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -273,7 +273,7 @@ class RoomServiceApi
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = false;
+        $multipart = true;
 
         // query params
         if ($sid !== null) {
@@ -281,11 +281,12 @@ class RoomServiceApi
         }
 
 
+        // form params
+        if ($room !== null) {
+            $formParams['room'] = $room-->toString();
+        }
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -294,7 +295,7 @@ class RoomServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['*/*']
+                ['multipart/form-data']
             );
         }
 

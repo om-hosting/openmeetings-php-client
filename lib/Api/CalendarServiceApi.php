@@ -2039,15 +2039,15 @@ class CalendarServiceApi
      * Operation save
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\CalendarBody $body body (optional)
+     * @param  \Swagger\Client\Model\AppointmentDTO $appointment appointment (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\AppointmentDTOWrapper
      */
-    public function save($sid, $body = null)
+    public function save($sid, $appointment = null)
     {
-        list($response) = $this->saveWithHttpInfo($sid, $body);
+        list($response) = $this->saveWithHttpInfo($sid, $appointment);
         return $response;
     }
 
@@ -2055,16 +2055,16 @@ class CalendarServiceApi
      * Operation saveWithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
+     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\AppointmentDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveWithHttpInfo($sid, $body = null)
+    public function saveWithHttpInfo($sid, $appointment = null)
     {
         $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
-        $request = $this->saveRequest($sid, $body);
+        $request = $this->saveRequest($sid, $appointment);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2131,14 +2131,14 @@ class CalendarServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
+     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAsync($sid, $body = null)
+    public function saveAsync($sid, $appointment = null)
     {
-        return $this->saveAsyncWithHttpInfo($sid, $body)
+        return $this->saveAsyncWithHttpInfo($sid, $appointment)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2152,15 +2152,15 @@ class CalendarServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
+     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAsyncWithHttpInfo($sid, $body = null)
+    public function saveAsyncWithHttpInfo($sid, $appointment = null)
     {
         $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
-        $request = $this->saveRequest($sid, $body);
+        $request = $this->saveRequest($sid, $appointment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2203,12 +2203,12 @@ class CalendarServiceApi
      * Create request for operation 'save'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
+     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function saveRequest($sid, $body = null)
+    protected function saveRequest($sid, $appointment = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -2222,7 +2222,7 @@ class CalendarServiceApi
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = false;
+        $multipart = true;
 
         // query params
         if ($sid !== null) {
@@ -2230,11 +2230,12 @@ class CalendarServiceApi
         }
 
 
+        // form params
+        if ($appointment !== null) {
+            $formParams['appointment'] = $appointment->__toString();
+        }
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2243,7 +2244,7 @@ class CalendarServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['*/*']
+                ['multipart/form-data']
             );
         }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * RoomHashRequestBody
+ * UserHashBody
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * RoomHashRequestBody Class Doc Comment
+ * UserHashBody Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class RoomHashRequestBody implements ModelInterface, ArrayAccess
+class UserHashBody implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'RoomHashRequestBody';
+    protected static $swaggerModelName = 'user_hash_body';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'options' => '\Swagger\Client\Model\RoomOptionsDTO',
-'user' => '\Swagger\Client\Model\ExternalUserDTO'    ];
+        'user' => '\Swagger\Client\Model\ExternalUserDTO',
+'options' => '\Swagger\Client\Model\RoomOptionsDTO'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +65,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'options' => null,
-'user' => null    ];
+        'user' => null,
+'options' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +95,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'options' => 'options',
-'user' => 'user'    ];
+        'user' => 'user',
+'options' => 'options'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +104,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'options' => 'setOptions',
-'user' => 'setUser'    ];
+        'user' => 'setUser',
+'options' => 'setOptions'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +113,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'options' => 'getOptions',
-'user' => 'getUser'    ];
+        'user' => 'getUser',
+'options' => 'getOptions'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +174,8 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /**
@@ -187,11 +187,11 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         if ($this->container['user'] === null) {
             $invalidProperties[] = "'user' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
         }
         return $invalidProperties;
     }
@@ -207,30 +207,6 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets options
-     *
-     * @return \Swagger\Client\Model\RoomOptionsDTO
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \Swagger\Client\Model\RoomOptionsDTO $options options
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
-
-        return $this;
-    }
 
     /**
      * Gets user
@@ -252,6 +228,30 @@ class RoomHashRequestBody implements ModelInterface, ArrayAccess
     public function setUser($user)
     {
         $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Swagger\Client\Model\RoomOptionsDTO
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Swagger\Client\Model\RoomOptionsDTO $options options
+     *
+     * @return $this
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }

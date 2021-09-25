@@ -155,12 +155,6 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
     {
         $serviceResultHashResultWrapper = $this->userApiInstance->getRoomHash(
             $this->sid,
-            new RoomOptionsDTO(
-                array(
-                    "room_id" => 1,
-                    "moderator" => true
-                )
-            ),
             new ExternalUserDTO(
                 array(
                     "firstname" => "John",
@@ -169,6 +163,12 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
                     "external_type" => "myCMS",
                     "login" => "john.doe",
                     "email" => "john.doe@gmail.com"
+                )
+            ),
+            new RoomOptionsDTO(
+                array(
+                    "room_id" => 1,
+                    "moderator" => true
                 )
             )
         );
