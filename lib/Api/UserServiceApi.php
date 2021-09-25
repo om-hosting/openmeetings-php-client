@@ -90,15 +90,16 @@ class UserServiceApi
      * Operation add3
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserBody $body body (optional)
+     * @param  \Swagger\Client\Model\UserDTO $user user (optional)
+     * @param  bool $confirm confirm (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\UserDTOWrapper
      */
-    public function add3($sid, $body = null)
+    public function add3($sid, $user = null, $confirm = null)
     {
-        list($response) = $this->add3WithHttpInfo($sid, $body);
+        list($response) = $this->add3WithHttpInfo($sid, $user, $confirm);
         return $response;
     }
 
@@ -106,16 +107,17 @@ class UserServiceApi
      * Operation add3WithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserBody $body (optional)
+     * @param  \Swagger\Client\Model\UserDTO $user (optional)
+     * @param  bool $confirm (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\UserDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function add3WithHttpInfo($sid, $body = null)
+    public function add3WithHttpInfo($sid, $user = null, $confirm = null)
     {
         $returnType = '\Swagger\Client\Model\UserDTOWrapper';
-        $request = $this->add3Request($sid, $body);
+        $request = $this->add3Request($sid, $user, $confirm);
 
         try {
             $options = $this->createHttpClientOption();
@@ -182,14 +184,15 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserBody $body (optional)
+     * @param  \Swagger\Client\Model\UserDTO $user (optional)
+     * @param  bool $confirm (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add3Async($sid, $body = null)
+    public function add3Async($sid, $user = null, $confirm = null)
     {
-        return $this->add3AsyncWithHttpInfo($sid, $body)
+        return $this->add3AsyncWithHttpInfo($sid, $user, $confirm)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -203,15 +206,16 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserBody $body (optional)
+     * @param  \Swagger\Client\Model\UserDTO $user (optional)
+     * @param  bool $confirm (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add3AsyncWithHttpInfo($sid, $body = null)
+    public function add3AsyncWithHttpInfo($sid, $user = null, $confirm = null)
     {
         $returnType = '\Swagger\Client\Model\UserDTOWrapper';
-        $request = $this->add3Request($sid, $body);
+        $request = $this->add3Request($sid, $user, $confirm);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,12 +258,13 @@ class UserServiceApi
      * Create request for operation 'add3'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserBody $body (optional)
+     * @param  \Swagger\Client\Model\UserDTO $user (optional)
+     * @param  bool $confirm (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function add3Request($sid, $body = null)
+    protected function add3Request($sid, $user = null, $confirm = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -273,7 +278,7 @@ class UserServiceApi
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = false;
+        $multipart = true;
 
         // query params
         if ($sid !== null) {
@@ -281,11 +286,16 @@ class UserServiceApi
         }
 
 
+        // form params
+        if ($user !== null) {
+            $formParams['user'] = $user->__toString();
+        }
+        // form params
+        if ($confirm !== null) {
+            $formParams['confirm'] = ObjectSerializer::toFormValue($confirm);
+        }
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -294,7 +304,7 @@ class UserServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['*/*']
+                ['multipart/form-data']
             );
         }
 

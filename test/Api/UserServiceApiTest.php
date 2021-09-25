@@ -30,7 +30,7 @@ namespace Swagger\Client;
 use Swagger\Client\Api\UserServiceApi;
 use Swagger\Client\Model\ExternalUserDTO;
 use Swagger\Client\Model\RoomOptionsDTO;
-use Swagger\Client\Model\UserBody;
+use Swagger\Client\Model\UserDTO;
 
 /**
  * UserServiceApiTest Class Doc Comment
@@ -91,19 +91,28 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testAdd3()
     {
+        $userRadomNo = rand(1000,9999);
 
-        $this->userApiInstance->
-
-        $userDTOWrapper = $this->userApiInstance->add3($this->sid, new UserBody(
+        $userDTOWrapper = $this->userApiInstance->add3($this->sid, new UserDTO(
             array(
+                "address" => array(
+                    "email" => "john.doe".$userRadomNo."@gmail.com"
+                ),
                 "firstname" => "John",
                 "lastname" => "Doe",
-                "external_id" => "uniqueId1",
+                "external_id" => "uniqueId1".$userRadomNo,
                 "external_type" => "myCMS",
-                "login" => "john.doe",
-                "email" => "john.doe@gmail.com"
-            )
+                "login" => "john.doe".$userRadomNo,
+                "password" => "!HansKarl01",
+                "rights" => array (
+                    "LOGIN", "DASHBOARD", "ROOM"
+                ),
+                "type" => "USER"
+            ),
+            false
         ));
+
+        $this->assertEquals("john.doe".$userRadomNo, $userDTOWrapper->getUserDto()->getLogin());
     }
 
     /**
