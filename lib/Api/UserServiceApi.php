@@ -90,16 +90,15 @@ class UserServiceApi
      * Operation add3
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserDTO $user user (optional)
-     * @param  bool $confirm confirm (optional)
+     * @param  \Swagger\Client\Model\UserBody $body body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\UserDTO[]
+     * @return \Swagger\Client\Model\UserDTOWrapper
      */
-    public function add3($sid, $user = null, $confirm = null)
+    public function add3($sid, $body = null)
     {
-        list($response) = $this->add3WithHttpInfo($sid, $user, $confirm);
+        list($response) = $this->add3WithHttpInfo($sid, $body);
         return $response;
     }
 
@@ -107,17 +106,16 @@ class UserServiceApi
      * Operation add3WithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserDTO $user (optional)
-     * @param  bool $confirm (optional)
+     * @param  \Swagger\Client\Model\UserBody $body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\UserDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UserDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function add3WithHttpInfo($sid, $user = null, $confirm = null)
+    public function add3WithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
-        $request = $this->add3Request($sid, $user, $confirm);
+        $returnType = '\Swagger\Client\Model\UserDTOWrapper';
+        $request = $this->add3Request($sid, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -168,7 +166,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\UserDTO[]',
+                        '\Swagger\Client\Model\UserDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -184,15 +182,14 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserDTO $user (optional)
-     * @param  bool $confirm (optional)
+     * @param  \Swagger\Client\Model\UserBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add3Async($sid, $user = null, $confirm = null)
+    public function add3Async($sid, $body = null)
     {
-        return $this->add3AsyncWithHttpInfo($sid, $user, $confirm)
+        return $this->add3AsyncWithHttpInfo($sid, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -206,16 +203,15 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserDTO $user (optional)
-     * @param  bool $confirm (optional)
+     * @param  \Swagger\Client\Model\UserBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add3AsyncWithHttpInfo($sid, $user = null, $confirm = null)
+    public function add3AsyncWithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
-        $request = $this->add3Request($sid, $user, $confirm);
+        $returnType = '\Swagger\Client\Model\UserDTOWrapper';
+        $request = $this->add3Request($sid, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -258,13 +254,12 @@ class UserServiceApi
      * Create request for operation 'add3'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\UserDTO $user (optional)
-     * @param  bool $confirm (optional)
+     * @param  \Swagger\Client\Model\UserBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function add3Request($sid, $user = null, $confirm = null)
+    protected function add3Request($sid, $body = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -286,16 +281,11 @@ class UserServiceApi
         }
 
 
-        // form params
-        if ($user !== null) {
-            $formParams['user'] = $user->__toString();
-        }
-        // form params
-        if ($confirm !== null) {
-            $formParams['confirm'] = ObjectSerializer::toFormValue($confirm);
-        }
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -304,7 +294,7 @@ class UserServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['multipart/form-data']
+                ['*/*']
             );
         }
 
@@ -366,7 +356,7 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete5($sid, $id)
     {
@@ -382,11 +372,11 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function delete5WithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete5Request($sid, $id);
 
         try {
@@ -438,7 +428,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -482,7 +472,7 @@ class UserServiceApi
      */
     public function delete5AsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete5Request($sid, $id);
 
         return $this->client
@@ -640,7 +630,7 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function deleteExternal1($sid, $externaltype, $externalid)
     {
@@ -657,11 +647,11 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteExternal1WithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteExternal1Request($sid, $externaltype, $externalid);
 
         try {
@@ -713,7 +703,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -759,7 +749,7 @@ class UserServiceApi
      */
     public function deleteExternal1AsyncWithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteExternal1Request($sid, $externaltype, $externalid);
 
         return $this->client
@@ -930,7 +920,7 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\UserDTO[]
+     * @return \Swagger\Client\Model\UserDTOListWrapper
      */
     public function get3($sid)
     {
@@ -945,11 +935,11 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\UserDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UserDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function get3WithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
+        $returnType = '\Swagger\Client\Model\UserDTOListWrapper';
         $request = $this->get3Request($sid);
 
         try {
@@ -1001,7 +991,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\UserDTO[]',
+                        '\Swagger\Client\Model\UserDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1043,7 +1033,7 @@ class UserServiceApi
      */
     public function get3AsyncWithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
+        $returnType = '\Swagger\Client\Model\UserDTOListWrapper';
         $request = $this->get3Request($sid);
 
         return $this->client
@@ -1181,16 +1171,16 @@ class UserServiceApi
      * Operation getRoomHash
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\ExternalUserDTO $user user (optional)
      * @param  \Swagger\Client\Model\RoomOptionsDTO $options options (optional)
+     * @param  \Swagger\Client\Model\ExternalUserDTO $user user (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
-    public function getRoomHash($sid, $user = null, $options = null)
+    public function getRoomHash($sid, $options = null, $user = null)
     {
-        list($response) = $this->getRoomHashWithHttpInfo($sid, $user, $options);
+        list($response) = $this->getRoomHashWithHttpInfo($sid, $options, $user);
         return $response;
     }
 
@@ -1198,17 +1188,17 @@ class UserServiceApi
      * Operation getRoomHashWithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
+     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRoomHashWithHttpInfo($sid, $user = null, $options = null)
+    public function getRoomHashWithHttpInfo($sid, $options = null, $user = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
-        $request = $this->getRoomHashRequest($sid, $user, $options);
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
+        $request = $this->getRoomHashRequest($sid, $options, $user);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1249,7 +1239,7 @@ class UserServiceApi
             }
 
             return [
-                ObjectSerializer::deserialize($content->serviceResult, $returnType, []),
+                ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
@@ -1259,7 +1249,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1275,15 +1265,15 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
+     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomHashAsync($sid, $user = null, $options = null)
+    public function getRoomHashAsync($sid, $options = null, $user = null)
     {
-        return $this->getRoomHashAsyncWithHttpInfo($sid, $user, $options)
+        return $this->getRoomHashAsyncWithHttpInfo($sid, $options, $user)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1297,16 +1287,16 @@ class UserServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
+     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomHashAsyncWithHttpInfo($sid, $user = null, $options = null)
+    public function getRoomHashAsyncWithHttpInfo($sid, $options = null, $user = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
-        $request = $this->getRoomHashRequest($sid, $user, $options);
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
+        $request = $this->getRoomHashRequest($sid, $options, $user);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1349,13 +1339,13 @@ class UserServiceApi
      * Create request for operation 'getRoomHash'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      * @param  \Swagger\Client\Model\RoomOptionsDTO $options (optional)
+     * @param  \Swagger\Client\Model\ExternalUserDTO $user (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRoomHashRequest($sid, $user = null, $options = null)
+    protected function getRoomHashRequest($sid, $options = null, $user = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -1378,12 +1368,12 @@ class UserServiceApi
 
 
         // form params
-        if ($user !== null) {
-            $formParams['user'] = $user->__toString();
-        }
-        // form params
         if ($options !== null) {
             $formParams['options'] = $options->__toString();
+        }
+        // form params
+        if ($user !== null) {
+            $formParams['user'] = $user->__toString();
         }
         // body params
         $_tempBody = null;
@@ -1457,7 +1447,7 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function login($user, $pass)
     {
@@ -1473,11 +1463,11 @@ class UserServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function loginWithHttpInfo($user, $pass)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->loginRequest($user, $pass);
 
         try {
@@ -1519,7 +1509,7 @@ class UserServiceApi
             }
 
             return [
-                ObjectSerializer::deserialize($content->serviceResult, $returnType, []),
+                ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
@@ -1529,7 +1519,7 @@ class UserServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1573,7 +1563,7 @@ class UserServiceApi
      */
     public function loginAsyncWithHttpInfo($user, $pass)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->loginRequest($user, $pass);
 
         return $this->client

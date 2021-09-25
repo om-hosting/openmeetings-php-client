@@ -106,7 +106,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileItemDTO
+     * @return \Swagger\Client\Model\FileItemDTOWrapper
      */
     public function add($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid)
     {
@@ -134,11 +134,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileItemDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileItemDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function addWithHttpInfo($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->addRequest($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid);
 
         try {
@@ -190,7 +190,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileItemDTO',
+                        '\Swagger\Client\Model\FileItemDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,7 +258,7 @@ class FileServiceApi
      */
     public function addAsyncWithHttpInfo($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->addRequest($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid);
 
         return $this->client
@@ -543,7 +543,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete1($sid, $id)
     {
@@ -559,11 +559,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function delete1WithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete1Request($sid, $id);
 
         try {
@@ -615,7 +615,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -659,7 +659,7 @@ class FileServiceApi
      */
     public function delete1AsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete1Request($sid, $id);
 
         return $this->client
@@ -817,7 +817,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function deleteExternal($sid, $externaltype, $externalid)
     {
@@ -834,11 +834,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteExternalWithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteExternalRequest($sid, $externaltype, $externalid);
 
         try {
@@ -890,7 +890,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -936,7 +936,7 @@ class FileServiceApi
      */
     public function deleteExternalAsyncWithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteExternalRequest($sid, $externaltype, $externalid);
 
         return $this->client
@@ -1108,7 +1108,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileItemDTO[]
+     * @return \Swagger\Client\Model\FileItemDTOListWrapper
      */
     public function getAllExternal($sid, $externaltype)
     {
@@ -1124,11 +1124,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileItemDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileItemDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllExternalWithHttpInfo($sid, $externaltype)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO[]';
+        $returnType = '\Swagger\Client\Model\FileItemDTOListWrapper';
         $request = $this->getAllExternalRequest($sid, $externaltype);
 
         try {
@@ -1180,7 +1180,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileItemDTO[]',
+                        '\Swagger\Client\Model\FileItemDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1224,7 +1224,7 @@ class FileServiceApi
      */
     public function getAllExternalAsyncWithHttpInfo($sid, $externaltype)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO[]';
+        $returnType = '\Swagger\Client\Model\FileItemDTOListWrapper';
         $request = $this->getAllExternalRequest($sid, $externaltype);
 
         return $this->client
@@ -1381,7 +1381,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileExplorerObject
+     * @return \Swagger\Client\Model\FileExplorerObjectWrapper
      */
     public function getRoom($sid, $id)
     {
@@ -1397,11 +1397,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileExplorerObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileExplorerObjectWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\FileExplorerObject';
+        $returnType = '\Swagger\Client\Model\FileExplorerObjectWrapper';
         $request = $this->getRoomRequest($sid, $id);
 
         try {
@@ -1453,7 +1453,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileExplorerObject',
+                        '\Swagger\Client\Model\FileExplorerObjectWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1497,7 +1497,7 @@ class FileServiceApi
      */
     public function getRoomAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\FileExplorerObject';
+        $returnType = '\Swagger\Client\Model\FileExplorerObjectWrapper';
         $request = $this->getRoomRequest($sid, $id);
 
         return $this->client
@@ -1655,7 +1655,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileItemDTO[]
+     * @return \Swagger\Client\Model\FileItemDTOListWrapper
      */
     public function getRoomByParent($sid, $id, $parent)
     {
@@ -1672,11 +1672,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileItemDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileItemDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomByParentWithHttpInfo($sid, $id, $parent)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO[]';
+        $returnType = '\Swagger\Client\Model\FileItemDTOListWrapper';
         $request = $this->getRoomByParentRequest($sid, $id, $parent);
 
         try {
@@ -1728,7 +1728,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileItemDTO[]',
+                        '\Swagger\Client\Model\FileItemDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1774,7 +1774,7 @@ class FileServiceApi
      */
     public function getRoomByParentAsyncWithHttpInfo($sid, $id, $parent)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO[]';
+        $returnType = '\Swagger\Client\Model\FileItemDTOListWrapper';
         $request = $this->getRoomByParentRequest($sid, $id, $parent);
 
         return $this->client
@@ -1948,7 +1948,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileItemDTO
+     * @return \Swagger\Client\Model\FileItemDTOWrapper
      */
     public function move($sid, $id, $roomid, $parentid)
     {
@@ -1966,11 +1966,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileItemDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileItemDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function moveWithHttpInfo($sid, $id, $roomid, $parentid)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->moveRequest($sid, $id, $roomid, $parentid);
 
         try {
@@ -2022,7 +2022,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileItemDTO',
+                        '\Swagger\Client\Model\FileItemDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2070,7 +2070,7 @@ class FileServiceApi
      */
     public function moveAsyncWithHttpInfo($sid, $id, $roomid, $parentid)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->moveRequest($sid, $id, $roomid, $parentid);
 
         return $this->client
@@ -2258,7 +2258,7 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\FileItemDTO
+     * @return \Swagger\Client\Model\FileItemDTOWrapper
      */
     public function rename($sid, $id, $name)
     {
@@ -2275,11 +2275,11 @@ class FileServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\FileItemDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\FileItemDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function renameWithHttpInfo($sid, $id, $name)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->renameRequest($sid, $id, $name);
 
         try {
@@ -2331,7 +2331,7 @@ class FileServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\FileItemDTO',
+                        '\Swagger\Client\Model\FileItemDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2377,7 +2377,7 @@ class FileServiceApi
      */
     public function renameAsyncWithHttpInfo($sid, $id, $name)
     {
-        $returnType = '\Swagger\Client\Model\FileItemDTO';
+        $returnType = '\Swagger\Client\Model\FileItemDTOWrapper';
         $request = $this->renameRequest($sid, $id, $name);
 
         return $this->client

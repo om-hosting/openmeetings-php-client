@@ -90,15 +90,15 @@ class RoomServiceApi
      * Operation add2
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomDTO $room room (optional)
+     * @param  \Swagger\Client\Model\RoomBody $body body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RoomDTO
+     * @return \Swagger\Client\Model\RoomDTOWrapper
      */
-    public function add2($sid, $room = null)
+    public function add2($sid, $body = null)
     {
-        list($response) = $this->add2WithHttpInfo($sid, $room);
+        list($response) = $this->add2WithHttpInfo($sid, $body);
         return $response;
     }
 
@@ -106,16 +106,16 @@ class RoomServiceApi
      * Operation add2WithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
+     * @param  \Swagger\Client\Model\RoomBody $body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RoomDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RoomDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function add2WithHttpInfo($sid, $room = null)
+    public function add2WithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
-        $request = $this->add2Request($sid, $room);
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
+        $request = $this->add2Request($sid, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -166,7 +166,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RoomDTO',
+                        '\Swagger\Client\Model\RoomDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,14 +182,14 @@ class RoomServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
+     * @param  \Swagger\Client\Model\RoomBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add2Async($sid, $room = null)
+    public function add2Async($sid, $body = null)
     {
-        return $this->add2AsyncWithHttpInfo($sid, $room)
+        return $this->add2AsyncWithHttpInfo($sid, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -203,15 +203,15 @@ class RoomServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
+     * @param  \Swagger\Client\Model\RoomBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function add2AsyncWithHttpInfo($sid, $room = null)
+    public function add2AsyncWithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
-        $request = $this->add2Request($sid, $room);
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
+        $request = $this->add2Request($sid, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,12 +254,12 @@ class RoomServiceApi
      * Create request for operation 'add2'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\RoomDTO $room (optional)
+     * @param  \Swagger\Client\Model\RoomBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function add2Request($sid, $room = null)
+    protected function add2Request($sid, $body = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -281,12 +281,11 @@ class RoomServiceApi
         }
 
 
-        // form params
-        if ($room !== null) {
-            $formParams['room'] = ObjectSerializer::toFormValue($room);
-        }
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -295,7 +294,7 @@ class RoomServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['multipart/form-data']
+                ['*/*']
             );
         }
 
@@ -357,7 +356,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function cleanWb($id, $sid = null)
     {
@@ -373,11 +372,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function cleanWbWithHttpInfo($id, $sid = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanWbRequest($id, $sid);
 
         try {
@@ -429,7 +428,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -473,7 +472,7 @@ class RoomServiceApi
      */
     public function cleanWbAsyncWithHttpInfo($id, $sid = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanWbRequest($id, $sid);
 
         return $this->client
@@ -624,7 +623,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function close($sid, $id)
     {
@@ -640,11 +639,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function closeWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->closeRequest($sid, $id);
 
         try {
@@ -696,7 +695,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -740,7 +739,7 @@ class RoomServiceApi
      */
     public function closeAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->closeRequest($sid, $id);
 
         return $this->client
@@ -897,7 +896,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function count($sid, $roomid)
     {
@@ -913,11 +912,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function countWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->countRequest($sid, $roomid);
 
         try {
@@ -969,7 +968,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1013,7 +1012,7 @@ class RoomServiceApi
      */
     public function countAsyncWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->countRequest($sid, $roomid);
 
         return $this->client
@@ -1170,7 +1169,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete4($sid, $id)
     {
@@ -1186,11 +1185,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function delete4WithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete4Request($sid, $id);
 
         try {
@@ -1242,7 +1241,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1286,7 +1285,7 @@ class RoomServiceApi
      */
     public function delete4AsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete4Request($sid, $id);
 
         return $this->client
@@ -1446,7 +1445,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RoomDTO
+     * @return \Swagger\Client\Model\RoomDTOWrapper
      */
     public function getExternal1($sid, $type, $externaltype, $externalid, $room)
     {
@@ -1465,11 +1464,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RoomDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RoomDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExternal1WithHttpInfo($sid, $type, $externaltype, $externalid, $room)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
         $request = $this->getExternal1Request($sid, $type, $externaltype, $externalid, $room);
 
         try {
@@ -1521,7 +1520,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RoomDTO',
+                        '\Swagger\Client\Model\RoomDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1571,7 +1570,7 @@ class RoomServiceApi
      */
     public function getExternal1AsyncWithHttpInfo($sid, $type, $externaltype, $externalid, $room)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
         $request = $this->getExternal1Request($sid, $type, $externaltype, $externalid, $room);
 
         return $this->client
@@ -1769,7 +1768,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RoomDTO[]
+     * @return \Swagger\Client\Model\RoomDTOListWrapper
      */
     public function getPublic($sid, $type)
     {
@@ -1785,11 +1784,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RoomDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RoomDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPublicWithHttpInfo($sid, $type)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO[]';
+        $returnType = '\Swagger\Client\Model\RoomDTOListWrapper';
         $request = $this->getPublicRequest($sid, $type);
 
         try {
@@ -1841,7 +1840,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RoomDTO[]',
+                        '\Swagger\Client\Model\RoomDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1885,7 +1884,7 @@ class RoomServiceApi
      */
     public function getPublicAsyncWithHttpInfo($sid, $type)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO[]';
+        $returnType = '\Swagger\Client\Model\RoomDTOListWrapper';
         $request = $this->getPublicRequest($sid, $type);
 
         return $this->client
@@ -2042,7 +2041,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RoomDTO
+     * @return \Swagger\Client\Model\RoomDTOWrapper
      */
     public function getRoomById($sid, $id)
     {
@@ -2058,11 +2057,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RoomDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RoomDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomByIdWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
         $request = $this->getRoomByIdRequest($sid, $id);
 
         try {
@@ -2114,7 +2113,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RoomDTO',
+                        '\Swagger\Client\Model\RoomDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2158,7 +2157,7 @@ class RoomServiceApi
      */
     public function getRoomByIdAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\RoomDTO';
+        $returnType = '\Swagger\Client\Model\RoomDTOWrapper';
         $request = $this->getRoomByIdRequest($sid, $id);
 
         return $this->client
@@ -2316,7 +2315,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function hash($sid, $invite, $sendmail)
     {
@@ -2333,11 +2332,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function hashWithHttpInfo($sid, $invite, $sendmail)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->hashRequest($sid, $invite, $sendmail);
 
         try {
@@ -2389,7 +2388,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2435,7 +2434,7 @@ class RoomServiceApi
      */
     public function hashAsyncWithHttpInfo($sid, $invite, $sendmail)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->hashRequest($sid, $invite, $sendmail);
 
         return $this->client
@@ -2601,7 +2600,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function kick($sid, $id, $external_type, $external_id)
     {
@@ -2619,11 +2618,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function kickWithHttpInfo($sid, $id, $external_type, $external_id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->kickRequest($sid, $id, $external_type, $external_id);
 
         try {
@@ -2675,7 +2674,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2723,7 +2722,7 @@ class RoomServiceApi
      */
     public function kickAsyncWithHttpInfo($sid, $id, $external_type, $external_id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->kickRequest($sid, $id, $external_type, $external_id);
 
         return $this->client
@@ -2910,7 +2909,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function kickAll($sid, $id)
     {
@@ -2926,11 +2925,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function kickAllWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->kickAllRequest($sid, $id);
 
         try {
@@ -2982,7 +2981,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3026,7 +3025,7 @@ class RoomServiceApi
      */
     public function kickAllAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->kickAllRequest($sid, $id);
 
         return $this->client
@@ -3183,7 +3182,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function open($sid, $id)
     {
@@ -3199,11 +3198,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function openWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->openRequest($sid, $id);
 
         try {
@@ -3255,7 +3254,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3299,7 +3298,7 @@ class RoomServiceApi
      */
     public function openAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->openRequest($sid, $id);
 
         return $this->client
@@ -3456,7 +3455,7 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\UserDTO[]
+     * @return \Swagger\Client\Model\UserDTOListWrapper
      */
     public function users($sid, $roomid)
     {
@@ -3472,11 +3471,11 @@ class RoomServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\UserDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UserDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function usersWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
+        $returnType = '\Swagger\Client\Model\UserDTOListWrapper';
         $request = $this->usersRequest($sid, $roomid);
 
         try {
@@ -3528,7 +3527,7 @@ class RoomServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\UserDTO[]',
+                        '\Swagger\Client\Model\UserDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3572,7 +3571,7 @@ class RoomServiceApi
      */
     public function usersAsyncWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\UserDTO[]';
+        $returnType = '\Swagger\Client\Model\UserDTOListWrapper';
         $request = $this->usersRequest($sid, $roomid);
 
         return $this->client

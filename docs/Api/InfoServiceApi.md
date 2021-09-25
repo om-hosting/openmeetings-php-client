@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**getVersion**](InfoServiceApi.md#getversion) | **GET** /info/version | 
 
 # **getHealth**
-> \Swagger\Client\Model\Health getHealth()
+> \Swagger\Client\Model\HealthWrapper getHealth()
 
 
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Health**](../Model/Health.md)
+[**\Swagger\Client\Model\HealthWrapper**](../Model/HealthWrapper.md)
 
 ### Authorization
 
@@ -53,7 +53,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getVersion**
-> \Swagger\Client\Model\Info getVersion()
+> \Swagger\Client\Model\InfoWrapper getVersion()
 
 
 
@@ -84,7 +84,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Info**](../Model/Info.md)
+[**\Swagger\Client\Model\InfoWrapper**](../Model/InfoWrapper.md)
 
 ### Authorization
 

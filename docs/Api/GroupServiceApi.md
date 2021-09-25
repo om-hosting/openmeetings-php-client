@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**removeUser**](GroupServiceApi.md#removeuser) | **DELETE** /group/{id}/users/{userid} | 
 
 # **add1**
-> \Swagger\Client\Model\ServiceResult add1($sid, $name)
+> \Swagger\Client\Model\ServiceResultWrapper add1($sid, $name)
 
 
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **addRoom**
-> \Swagger\Client\Model\ServiceResult addRoom($sid, $id, $roomid)
+> \Swagger\Client\Model\ServiceResultWrapper addRoom($sid, $id, $roomid)
 
 
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **addUser**
-> \Swagger\Client\Model\ServiceResult addUser($sid, $id, $userid)
+> \Swagger\Client\Model\ServiceResultWrapper addUser($sid, $id, $userid)
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -170,7 +170,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **delete2**
-> \Swagger\Client\Model\ServiceResult delete2($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete2($sid, $id)
 
 
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **get1**
-> \Swagger\Client\Model\GroupDTO[] get1($sid)
+> \Swagger\Client\Model\GroupDTOListWrapper get1($sid)
 
 
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GroupDTO[]**](../Model/GroupDTO.md)
+[**\Swagger\Client\Model\GroupDTOListWrapper**](../Model/GroupDTOListWrapper.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getUsers**
-> \Swagger\Client\Model\UserSearchResult getUsers($sid, $id, $start, $max, $orderby, $asc)
+> \Swagger\Client\Model\UserSearchResultWrapper getUsers($sid, $id, $start, $max, $orderby, $asc)
 
 
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\UserSearchResult**](../Model/UserSearchResult.md)
+[**\Swagger\Client\Model\UserSearchResultWrapper**](../Model/UserSearchResultWrapper.md)
 
 ### Authorization
 
@@ -329,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeUser**
-> \Swagger\Client\Model\ServiceResult removeUser($sid, $id, $userid)
+> \Swagger\Client\Model\ServiceResultWrapper removeUser($sid, $id, $userid)
 
 
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 

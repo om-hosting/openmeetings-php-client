@@ -27,9 +27,10 @@
 
 namespace Swagger\Client;
 
-use Swagger\Client\Configuration;
-use Swagger\Client\ApiException;
-use Swagger\Client\ObjectSerializer;
+use Swagger\Client\Api\UserServiceApi;
+use Swagger\Client\Model\ExternalUserDTO;
+use Swagger\Client\Model\RoomOptionsDTO;
+use Swagger\Client\Model\UserBody;
 
 /**
  * UserServiceApiTest Class Doc Comment
@@ -41,6 +42,9 @@ use Swagger\Client\ObjectSerializer;
  */
 class UserServiceApiTest extends \PHPUnit_Framework_TestCase
 {
+
+    private $userApiInstance;
+    private $sid;
 
     /**
      * Setup before running any test cases
@@ -54,6 +58,15 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        $config = new Configuration();
+        $config->setHost('http://localhost:5080/openmeetings/services');
+        $this->userApiInstance = new UserServiceApi(null, $config);
+        $serviceResultWrapper = $this->userApiInstance->login("soapuser", "!HansHans1");
+        if ($serviceResultWrapper->getServiceResult()->getType() != "SUCCESS") {
+            fwrite(STDERR, print_r($serviceResultWrapper, true));
+            return false;
+        }
+        $this->sid = $serviceResultWrapper->getServiceResult()->getMessage();
     }
 
     /**
@@ -78,6 +91,19 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testAdd3()
     {
+
+        $this->userApiInstance->
+
+        $userDTOWrapper = $this->userApiInstance->add3($this->sid, new UserBody(
+            array(
+                "firstname" => "John",
+                "lastname" => "Doe",
+                "external_id" => "uniqueId1",
+                "external_type" => "myCMS",
+                "login" => "john.doe",
+                "email" => "john.doe@gmail.com"
+            )
+        ));
     }
 
     /**
@@ -118,15 +144,26 @@ class UserServiceApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetRoomHash()
     {
-    }
+        $serviceResultHashResultWrapper = $this->userApiInstance->getRoomHash(
+            $this->sid,
+            new RoomOptionsDTO(
+                array(
+                    "room_id" => 1,
+                    "moderator" => true
+                )
+            ),
+            new ExternalUserDTO(
+                array(
+                    "firstname" => "John",
+                    "lastname" => "Doe",
+                    "external_id" => "uniqueId1",
+                    "external_type" => "myCMS",
+                    "login" => "john.doe",
+                    "email" => "john.doe@gmail.com"
+                )
+            )
+        );
 
-    /**
-     * Test case for login
-     *
-     * .
-     *
-     */
-    public function testLogin()
-    {
+        $this->assertEquals("SUCCESS", $serviceResultHashResultWrapper->getServiceResult()->getType());
     }
 }

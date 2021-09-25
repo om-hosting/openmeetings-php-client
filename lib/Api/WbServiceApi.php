@@ -96,7 +96,7 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function cleanSlide($sid, $roomid, $wbid, $slide)
     {
@@ -114,11 +114,11 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function cleanSlideWithHttpInfo($sid, $roomid, $wbid, $slide)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanSlideRequest($sid, $roomid, $wbid, $slide);
 
         try {
@@ -170,7 +170,7 @@ class WbServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -218,7 +218,7 @@ class WbServiceApi
      */
     public function cleanSlideAsyncWithHttpInfo($sid, $roomid, $wbid, $slide)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanSlideRequest($sid, $roomid, $wbid, $slide);
 
         return $this->client
@@ -406,7 +406,7 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function cleanWb1($sid, $roomid, $wbid)
     {
@@ -423,11 +423,11 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function cleanWb1WithHttpInfo($sid, $roomid, $wbid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanWb1Request($sid, $roomid, $wbid);
 
         try {
@@ -479,7 +479,7 @@ class WbServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -525,7 +525,7 @@ class WbServiceApi
      */
     public function cleanWb1AsyncWithHttpInfo($sid, $roomid, $wbid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->cleanWb1Request($sid, $roomid, $wbid);
 
         return $this->client
@@ -697,7 +697,7 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function resetWb($sid, $id)
     {
@@ -713,11 +713,11 @@ class WbServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function resetWbWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->resetWbRequest($sid, $id);
 
         try {
@@ -769,7 +769,7 @@ class WbServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -813,7 +813,7 @@ class WbServiceApi
      */
     public function resetWbAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->resetWbRequest($sid, $id);
 
         return $this->client
@@ -967,15 +967,15 @@ class WbServiceApi
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
      * @param  string $type the type of document being saved PNG/PDF (required)
-     * @param  string $data data (optional)
+     * @param  \Swagger\Client\Model\UploadwbTypeBody $body body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
-    public function uploadWb($sid, $type, $data = null)
+    public function uploadWb($sid, $type, $body = null)
     {
-        list($response) = $this->uploadWbWithHttpInfo($sid, $type, $data);
+        list($response) = $this->uploadWbWithHttpInfo($sid, $type, $body);
         return $response;
     }
 
@@ -984,16 +984,16 @@ class WbServiceApi
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
      * @param  string $type the type of document being saved PNG/PDF (required)
-     * @param  string $data (optional)
+     * @param  \Swagger\Client\Model\UploadwbTypeBody $body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadWbWithHttpInfo($sid, $type, $data = null)
+    public function uploadWbWithHttpInfo($sid, $type, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
-        $request = $this->uploadWbRequest($sid, $type, $data);
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
+        $request = $this->uploadWbRequest($sid, $type, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1044,7 +1044,7 @@ class WbServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1061,14 +1061,14 @@ class WbServiceApi
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
      * @param  string $type the type of document being saved PNG/PDF (required)
-     * @param  string $data (optional)
+     * @param  \Swagger\Client\Model\UploadwbTypeBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadWbAsync($sid, $type, $data = null)
+    public function uploadWbAsync($sid, $type, $body = null)
     {
-        return $this->uploadWbAsyncWithHttpInfo($sid, $type, $data)
+        return $this->uploadWbAsyncWithHttpInfo($sid, $type, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1083,15 +1083,15 @@ class WbServiceApi
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
      * @param  string $type the type of document being saved PNG/PDF (required)
-     * @param  string $data (optional)
+     * @param  \Swagger\Client\Model\UploadwbTypeBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadWbAsyncWithHttpInfo($sid, $type, $data = null)
+    public function uploadWbAsyncWithHttpInfo($sid, $type, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
-        $request = $this->uploadWbRequest($sid, $type, $data);
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
+        $request = $this->uploadWbRequest($sid, $type, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1135,12 +1135,12 @@ class WbServiceApi
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
      * @param  string $type the type of document being saved PNG/PDF (required)
-     * @param  string $data (optional)
+     * @param  \Swagger\Client\Model\UploadwbTypeBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function uploadWbRequest($sid, $type, $data = null)
+    protected function uploadWbRequest($sid, $type, $body = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -1176,12 +1176,11 @@ class WbServiceApi
             );
         }
 
-        // form params
-        if ($data !== null) {
-            $formParams['data'] = ObjectSerializer::toFormValue($data);
-        }
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1190,7 +1189,7 @@ class WbServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['multipart/form-data']
+                ['*/*']
             );
         }
 

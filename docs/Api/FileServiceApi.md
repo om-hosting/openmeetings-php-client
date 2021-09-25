@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**rename**](FileServiceApi.md#rename) | **POST** /file/rename/{id}/{name} | 
 
 # **add**
-> \Swagger\Client\Model\FileItemDTO add($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid)
+> \Swagger\Client\Model\FileItemDTOWrapper add($external_id, $external_type, $group_id, $hash, $height, $id, $name, $owner_id, $parent_id, $room_id, $size, $type, $width, $sid)
 
 
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileItemDTO**](../Model/FileItemDTO.md)
+[**\Swagger\Client\Model\FileItemDTOWrapper**](../Model/FileItemDTOWrapper.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **delete1**
-> \Swagger\Client\Model\ServiceResult delete1($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete1($sid, $id)
 
 
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -140,7 +140,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteExternal**
-> \Swagger\Client\Model\ServiceResult deleteExternal($sid, $externaltype, $externalid)
+> \Swagger\Client\Model\ServiceResultWrapper deleteExternal($sid, $externaltype, $externalid)
 
 
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAllExternal**
-> \Swagger\Client\Model\FileItemDTO[] getAllExternal($sid, $externaltype)
+> \Swagger\Client\Model\FileItemDTOListWrapper getAllExternal($sid, $externaltype)
 
 
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileItemDTO[]**](../Model/FileItemDTO.md)
+[**\Swagger\Client\Model\FileItemDTOListWrapper**](../Model/FileItemDTOListWrapper.md)
 
 ### Authorization
 
@@ -244,7 +244,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRoom**
-> \Swagger\Client\Model\FileExplorerObject getRoom($sid, $id)
+> \Swagger\Client\Model\FileExplorerObjectWrapper getRoom($sid, $id)
 
 
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileExplorerObject**](../Model/FileExplorerObject.md)
+[**\Swagger\Client\Model\FileExplorerObjectWrapper**](../Model/FileExplorerObjectWrapper.md)
 
 ### Authorization
 
@@ -295,7 +295,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRoomByParent**
-> \Swagger\Client\Model\FileItemDTO[] getRoomByParent($sid, $id, $parent)
+> \Swagger\Client\Model\FileItemDTOListWrapper getRoomByParent($sid, $id, $parent)
 
 
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileItemDTO[]**](../Model/FileItemDTO.md)
+[**\Swagger\Client\Model\FileItemDTOListWrapper**](../Model/FileItemDTOListWrapper.md)
 
 ### Authorization
 
@@ -348,7 +348,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **move**
-> \Swagger\Client\Model\FileItemDTO move($sid, $id, $roomid, $parentid)
+> \Swagger\Client\Model\FileItemDTOWrapper move($sid, $id, $roomid, $parentid)
 
 
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileItemDTO**](../Model/FileItemDTO.md)
+[**\Swagger\Client\Model\FileItemDTOWrapper**](../Model/FileItemDTOWrapper.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **rename**
-> \Swagger\Client\Model\FileItemDTO rename($sid, $id, $name)
+> \Swagger\Client\Model\FileItemDTOWrapper rename($sid, $id, $name)
 
 
 
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\FileItemDTO**](../Model/FileItemDTO.md)
+[**\Swagger\Client\Model\FileItemDTOWrapper**](../Model/FileItemDTOWrapper.md)
 
 ### Authorization
 

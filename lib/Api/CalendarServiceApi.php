@@ -94,7 +94,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete($sid, $id)
     {
@@ -110,11 +110,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteRequest($sid, $id);
 
         try {
@@ -166,7 +166,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -210,7 +210,7 @@ class CalendarServiceApi
      */
     public function deleteAsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->deleteRequest($sid, $id);
 
         return $this->client
@@ -367,7 +367,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO
+     * @return \Swagger\Client\Model\AppointmentDTOWrapper
      */
     public function getByRoom($sid, $roomid)
     {
@@ -383,11 +383,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByRoomWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->getByRoomRequest($sid, $roomid);
 
         try {
@@ -439,7 +439,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO',
+                        '\Swagger\Client\Model\AppointmentDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -483,7 +483,7 @@ class CalendarServiceApi
      */
     public function getByRoomAsyncWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->getByRoomRequest($sid, $roomid);
 
         return $this->client
@@ -640,7 +640,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO[]
+     * @return \Swagger\Client\Model\AppointmentDTOListWrapper
      */
     public function getByTitle($sid, $title)
     {
@@ -656,11 +656,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByTitleWithHttpInfo($sid, $title)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->getByTitleRequest($sid, $title);
 
         try {
@@ -712,7 +712,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO[]',
+                        '\Swagger\Client\Model\AppointmentDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -756,7 +756,7 @@ class CalendarServiceApi
      */
     public function getByTitleAsyncWithHttpInfo($sid, $title)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->getByTitleRequest($sid, $title);
 
         return $this->client
@@ -912,7 +912,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO
+     * @return \Swagger\Client\Model\AppointmentDTOWrapper
      */
     public function next($sid)
     {
@@ -927,11 +927,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function nextWithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->nextRequest($sid);
 
         try {
@@ -983,7 +983,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO',
+                        '\Swagger\Client\Model\AppointmentDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1025,7 +1025,7 @@ class CalendarServiceApi
      */
     public function nextAsyncWithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->nextRequest($sid);
 
         return $this->client
@@ -1167,7 +1167,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO
+     * @return \Swagger\Client\Model\AppointmentDTOWrapper
      */
     public function nextForUser($sid, $userid)
     {
@@ -1183,11 +1183,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function nextForUserWithHttpInfo($sid, $userid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->nextForUserRequest($sid, $userid);
 
         try {
@@ -1239,7 +1239,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO',
+                        '\Swagger\Client\Model\AppointmentDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1283,7 +1283,7 @@ class CalendarServiceApi
      */
     public function nextForUserAsyncWithHttpInfo($sid, $userid)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
         $request = $this->nextForUserRequest($sid, $userid);
 
         return $this->client
@@ -1441,7 +1441,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO[]
+     * @return \Swagger\Client\Model\AppointmentDTOListWrapper
      */
     public function range($sid, $start, $end)
     {
@@ -1458,11 +1458,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function rangeWithHttpInfo($sid, $start, $end)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->rangeRequest($sid, $start, $end);
 
         try {
@@ -1514,7 +1514,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO[]',
+                        '\Swagger\Client\Model\AppointmentDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1560,7 +1560,7 @@ class CalendarServiceApi
      */
     public function rangeAsyncWithHttpInfo($sid, $start, $end)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->rangeRequest($sid, $start, $end);
 
         return $this->client
@@ -1734,7 +1734,7 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO[]
+     * @return \Swagger\Client\Model\AppointmentDTOListWrapper
      */
     public function rangeForUser($sid, $userid, $start, $end)
     {
@@ -1752,11 +1752,11 @@ class CalendarServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function rangeForUserWithHttpInfo($sid, $userid, $start, $end)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->rangeForUserRequest($sid, $userid, $start, $end);
 
         try {
@@ -1808,7 +1808,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO[]',
+                        '\Swagger\Client\Model\AppointmentDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1856,7 +1856,7 @@ class CalendarServiceApi
      */
     public function rangeForUserAsyncWithHttpInfo($sid, $userid, $start, $end)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO[]';
+        $returnType = '\Swagger\Client\Model\AppointmentDTOListWrapper';
         $request = $this->rangeForUserRequest($sid, $userid, $start, $end);
 
         return $this->client
@@ -2039,15 +2039,15 @@ class CalendarServiceApi
      * Operation save
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\AppointmentDTO $appointment appointment (optional)
+     * @param  \Swagger\Client\Model\CalendarBody $body body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AppointmentDTO
+     * @return \Swagger\Client\Model\AppointmentDTOWrapper
      */
-    public function save($sid, $appointment = null)
+    public function save($sid, $body = null)
     {
-        list($response) = $this->saveWithHttpInfo($sid, $appointment);
+        list($response) = $this->saveWithHttpInfo($sid, $body);
         return $response;
     }
 
@@ -2055,16 +2055,16 @@ class CalendarServiceApi
      * Operation saveWithHttpInfo
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
+     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\AppointmentDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\AppointmentDTOWrapper, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveWithHttpInfo($sid, $appointment = null)
+    public function saveWithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
-        $request = $this->saveRequest($sid, $appointment);
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
+        $request = $this->saveRequest($sid, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2115,7 +2115,7 @@ class CalendarServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\AppointmentDTO',
+                        '\Swagger\Client\Model\AppointmentDTOWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2131,14 +2131,14 @@ class CalendarServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
+     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAsync($sid, $appointment = null)
+    public function saveAsync($sid, $body = null)
     {
-        return $this->saveAsyncWithHttpInfo($sid, $appointment)
+        return $this->saveAsyncWithHttpInfo($sid, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2152,15 +2152,15 @@ class CalendarServiceApi
      * 
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
+     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAsyncWithHttpInfo($sid, $appointment = null)
+    public function saveAsyncWithHttpInfo($sid, $body = null)
     {
-        $returnType = '\Swagger\Client\Model\AppointmentDTO';
-        $request = $this->saveRequest($sid, $appointment);
+        $returnType = '\Swagger\Client\Model\AppointmentDTOWrapper';
+        $request = $this->saveRequest($sid, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2203,12 +2203,12 @@ class CalendarServiceApi
      * Create request for operation 'save'
      *
      * @param  string $sid The SID of the User. This SID must be marked as Loggedin (required)
-     * @param  \Swagger\Client\Model\AppointmentDTO $appointment (optional)
+     * @param  \Swagger\Client\Model\CalendarBody $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function saveRequest($sid, $appointment = null)
+    protected function saveRequest($sid, $body = null)
     {
         // verify the required parameter 'sid' is set
         if ($sid === null || (is_array($sid) && count($sid) === 0)) {
@@ -2230,12 +2230,11 @@ class CalendarServiceApi
         }
 
 
-        // form params
-        if ($appointment !== null) {
-            $formParams['appointment'] = ObjectSerializer::toFormValue($appointment);
-        }
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2244,7 +2243,7 @@ class CalendarServiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['multipart/form-data']
+                ['*/*']
             );
         }
 

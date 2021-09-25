@@ -1,6 +1,6 @@
 <?php
 /**
- * UserHashBody
+ * RecordingDTOListWrapper
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * UserHashBody Class Doc Comment
+ * RecordingDTOListWrapper Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UserHashBody implements ModelInterface, ArrayAccess
+class RecordingDTOListWrapper implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'user_hash_body';
+    protected static $swaggerModelName = 'RecordingDTOListWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user' => '\Swagger\Client\Model\ExternalUserDTO',
-'options' => '\Swagger\Client\Model\RoomOptionsDTO'    ];
+        'recording_dto' => '\Swagger\Client\Model\RecordingDTO[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +64,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'user' => null,
-'options' => null    ];
+        'recording_dto' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +93,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user' => 'user',
-'options' => 'options'    ];
+        'recording_dto' => 'recordingDTO'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +101,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user' => 'setUser',
-'options' => 'setOptions'    ];
+        'recording_dto' => 'setRecordingDto'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +109,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user' => 'getUser',
-'options' => 'getOptions'    ];
+        'recording_dto' => 'getRecordingDto'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +169,7 @@ class UserHashBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['recording_dto'] = isset($data['recording_dto']) ? $data['recording_dto'] : null;
     }
 
     /**
@@ -187,12 +181,6 @@ class UserHashBody implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -209,49 +197,25 @@ class UserHashBody implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user
+     * Gets recording_dto
      *
-     * @return \Swagger\Client\Model\ExternalUserDTO
+     * @return \Swagger\Client\Model\RecordingDTO[]
      */
-    public function getUser()
+    public function getRecordingDto()
     {
-        return $this->container['user'];
+        return $this->container['recording_dto'];
     }
 
     /**
-     * Sets user
+     * Sets recording_dto
      *
-     * @param \Swagger\Client\Model\ExternalUserDTO $user user
+     * @param \Swagger\Client\Model\RecordingDTO[] $recording_dto recording_dto
      *
      * @return $this
      */
-    public function setUser($user)
+    public function setRecordingDto($recording_dto)
     {
-        $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \Swagger\Client\Model\RoomOptionsDTO
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \Swagger\Client\Model\RoomOptionsDTO $options options
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $this->container['recording_dto'] = $recording_dto;
 
         return $this;
     }
