@@ -259,6 +259,11 @@ class ObjectSerializer
             // be interpreted as a missing field/value. Let's handle
             // this graceful.
             if (!empty($data)) {
+                if (is_object($data)) {
+                    $time = $data->time;
+                    return new \DateTime("@$time");
+                }
+
                 return new \DateTime($data);
             } else {
                 return null;

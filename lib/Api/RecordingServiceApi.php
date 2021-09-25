@@ -94,7 +94,7 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete3($sid, $id)
     {
@@ -110,11 +110,11 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function delete3WithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete3Request($sid, $id);
 
         try {
@@ -166,7 +166,7 @@ class RecordingServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -210,7 +210,7 @@ class RecordingServiceApi
      */
     public function delete3AsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete3Request($sid, $id);
 
         return $this->client
@@ -368,7 +368,7 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RecordingDTO[]
+     * @return \Swagger\Client\Model\RecordingDTOListWrapper
      */
     public function getExternal($sid, $externaltype, $externalid)
     {
@@ -385,11 +385,11 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RecordingDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RecordingDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExternalWithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalRequest($sid, $externaltype, $externalid);
 
         try {
@@ -441,7 +441,7 @@ class RecordingServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RecordingDTO[]',
+                        '\Swagger\Client\Model\RecordingDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -487,7 +487,7 @@ class RecordingServiceApi
      */
     public function getExternalAsyncWithHttpInfo($sid, $externaltype, $externalid)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalRequest($sid, $externaltype, $externalid);
 
         return $this->client
@@ -659,7 +659,7 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RecordingDTO[]
+     * @return \Swagger\Client\Model\RecordingDTOListWrapper
      */
     public function getExternalByRoom($sid, $roomid)
     {
@@ -675,11 +675,11 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RecordingDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RecordingDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExternalByRoomWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalByRoomRequest($sid, $roomid);
 
         try {
@@ -731,7 +731,7 @@ class RecordingServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RecordingDTO[]',
+                        '\Swagger\Client\Model\RecordingDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -775,7 +775,7 @@ class RecordingServiceApi
      */
     public function getExternalByRoomAsyncWithHttpInfo($sid, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalByRoomRequest($sid, $roomid);
 
         return $this->client
@@ -932,7 +932,7 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RecordingDTO[]
+     * @return \Swagger\Client\Model\RecordingDTOListWrapper
      */
     public function getExternalByType($sid, $externaltype)
     {
@@ -948,11 +948,11 @@ class RecordingServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RecordingDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RecordingDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExternalByTypeWithHttpInfo($sid, $externaltype)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalByTypeRequest($sid, $externaltype);
 
         try {
@@ -1004,7 +1004,7 @@ class RecordingServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\RecordingDTO[]',
+                        '\Swagger\Client\Model\RecordingDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1048,7 +1048,7 @@ class RecordingServiceApi
      */
     public function getExternalByTypeAsyncWithHttpInfo($sid, $externaltype)
     {
-        $returnType = '\Swagger\Client\Model\RecordingDTO[]';
+        $returnType = '\Swagger\Client\Model\RecordingDTOListWrapper';
         $request = $this->getExternalByTypeRequest($sid, $externaltype);
 
         return $this->client

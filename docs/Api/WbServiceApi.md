@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**uploadWb**](WbServiceApi.md#uploadwb) | **POST** /wb/uploadwb/{type} | 
 
 # **cleanSlide**
-> \Swagger\Client\Model\ServiceResult cleanSlide($sid, $roomid, $wbid, $slide)
+> \Swagger\Client\Model\ServiceResultWrapper cleanSlide($sid, $roomid, $wbid, $slide)
 
 
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **cleanWb1**
-> \Swagger\Client\Model\ServiceResult cleanWb1($sid, $roomid, $wbid)
+> \Swagger\Client\Model\ServiceResultWrapper cleanWb1($sid, $roomid, $wbid)
 
 
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **resetWb**
-> \Swagger\Client\Model\ServiceResult resetWb($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper resetWb($sid, $id)
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadWb**
-> \Swagger\Client\Model\ServiceResult uploadWb($sid, $type, $data)
+> \Swagger\Client\Model\ServiceResultWrapper uploadWb($sid, $type, $body)
 
 
 
@@ -187,10 +187,10 @@ $apiInstance = new Swagger\Client\Api\WbServiceApi(
 );
 $sid = "sid_example"; // string | The SID of the User. This SID must be marked as Loggedin
 $type = "type_example"; // string | the type of document being saved PNG/PDF
-$data = "data_example"; // string | 
+$body = new \Swagger\Client\Model\UploadwbTypeBody(); // \Swagger\Client\Model\UploadwbTypeBody | 
 
 try {
-    $result = $apiInstance->uploadWb($sid, $type, $data);
+    $result = $apiInstance->uploadWb($sid, $type, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WbServiceApi->uploadWb: ', $e->getMessage(), PHP_EOL;
@@ -204,11 +204,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sid** | **string**| The SID of the User. This SID must be marked as Loggedin |
  **type** | **string**| the type of document being saved PNG/PDF |
- **data** | **string**|  | [optional]
+ **body** | [**\Swagger\Client\Model\UploadwbTypeBody**](../Model/UploadwbTypeBody.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

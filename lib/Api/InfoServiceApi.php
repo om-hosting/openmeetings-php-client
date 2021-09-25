@@ -92,7 +92,7 @@ class InfoServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Health
+     * @return \Swagger\Client\Model\HealthWrapper
      */
     public function getHealth()
     {
@@ -106,11 +106,11 @@ class InfoServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Health, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\HealthWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHealthWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\Health';
+        $returnType = '\Swagger\Client\Model\HealthWrapper';
         $request = $this->getHealthRequest();
 
         try {
@@ -162,7 +162,7 @@ class InfoServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Health',
+                        '\Swagger\Client\Model\HealthWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -202,7 +202,7 @@ class InfoServiceApi
      */
     public function getHealthAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\Health';
+        $returnType = '\Swagger\Client\Model\HealthWrapper';
         $request = $this->getHealthRequest();
 
         return $this->client
@@ -331,7 +331,7 @@ class InfoServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Info
+     * @return \Swagger\Client\Model\InfoWrapper
      */
     public function getVersion()
     {
@@ -345,11 +345,11 @@ class InfoServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Info, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\InfoWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVersionWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\Info';
+        $returnType = '\Swagger\Client\Model\InfoWrapper';
         $request = $this->getVersionRequest();
 
         try {
@@ -401,7 +401,7 @@ class InfoServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Info',
+                        '\Swagger\Client\Model\InfoWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class InfoServiceApi
      */
     public function getVersionAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\Info';
+        $returnType = '\Swagger\Client\Model\InfoWrapper';
         $request = $this->getVersionRequest();
 
         return $this->client

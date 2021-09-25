@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**report**](ErrorServiceApi.md#report) | **POST** /error/report | 
 
 # **get**
-> \Swagger\Client\Model\ServiceResult get($key, $lang)
+> \Swagger\Client\Model\ServiceResultWrapper get($key, $lang)
 
 
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 

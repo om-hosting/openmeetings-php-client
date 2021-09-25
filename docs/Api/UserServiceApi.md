@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**login**](UserServiceApi.md#login) | **GET** /user/login | 
 
 # **add3**
-> \Swagger\Client\Model\UserDTO[] add3($sid, $user, $confirm)
+> \Swagger\Client\Model\UserDTOWrapper add3($sid, $body)
 
 
 
@@ -29,11 +29,10 @@ $apiInstance = new Swagger\Client\Api\UserServiceApi(
     new GuzzleHttp\Client()
 );
 $sid = "sid_example"; // string | The SID of the User. This SID must be marked as Loggedin
-$user = new \Swagger\Client\Model\UserDTO(); // \Swagger\Client\Model\UserDTO | 
-$confirm = true; // bool | 
+$body = new \Swagger\Client\Model\UserBody(); // \Swagger\Client\Model\UserBody | 
 
 try {
-    $result = $apiInstance->add3($sid, $user, $confirm);
+    $result = $apiInstance->add3($sid, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserServiceApi->add3: ', $e->getMessage(), PHP_EOL;
@@ -46,12 +45,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sid** | **string**| The SID of the User. This SID must be marked as Loggedin |
- **user** | [**\Swagger\Client\Model\UserDTO**](../Model/.md)|  | [optional]
- **confirm** | **bool**|  | [optional]
+ **body** | [**\Swagger\Client\Model\UserBody**](../Model/UserBody.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\UserDTO[]**](../Model/UserDTO.md)
+[**\Swagger\Client\Model\UserDTOWrapper**](../Model/UserDTOWrapper.md)
 
 ### Authorization
 
@@ -59,13 +57,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **delete5**
-> \Swagger\Client\Model\ServiceResult delete5($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete5($sid, $id)
 
 
 
@@ -102,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -116,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteExternal1**
-> \Swagger\Client\Model\ServiceResult deleteExternal1($sid, $externaltype, $externalid)
+> \Swagger\Client\Model\ServiceResultWrapper deleteExternal1($sid, $externaltype, $externalid)
 
 
 
@@ -155,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -169,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **get3**
-> \Swagger\Client\Model\UserDTO[] get3($sid)
+> \Swagger\Client\Model\UserDTOListWrapper get3($sid)
 
 
 
@@ -204,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\UserDTO[]**](../Model/UserDTO.md)
+[**\Swagger\Client\Model\UserDTOListWrapper**](../Model/UserDTOListWrapper.md)
 
 ### Authorization
 
@@ -218,7 +216,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRoomHash**
-> \Swagger\Client\Model\ServiceResult getRoomHash($sid, $user, $options)
+> \Swagger\Client\Model\ServiceResultWrapper getRoomHash($sid, $options, $user)
 
 
 
@@ -235,11 +233,11 @@ $apiInstance = new Swagger\Client\Api\UserServiceApi(
     new GuzzleHttp\Client()
 );
 $sid = "sid_example"; // string | The SID of the User. This SID must be marked as Loggedin
-$user = new \Swagger\Client\Model\ExternalUserDTO(); // \Swagger\Client\Model\ExternalUserDTO | 
 $options = new \Swagger\Client\Model\RoomOptionsDTO(); // \Swagger\Client\Model\RoomOptionsDTO | 
+$user = new \Swagger\Client\Model\ExternalUserDTO(); // \Swagger\Client\Model\ExternalUserDTO | 
 
 try {
-    $result = $apiInstance->getRoomHash($sid, $user, $options);
+    $result = $apiInstance->getRoomHash($sid, $options, $user);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserServiceApi->getRoomHash: ', $e->getMessage(), PHP_EOL;
@@ -252,12 +250,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sid** | **string**| The SID of the User. This SID must be marked as Loggedin |
- **user** | [**\Swagger\Client\Model\ExternalUserDTO**](../Model/.md)|  | [optional]
  **options** | [**\Swagger\Client\Model\RoomOptionsDTO**](../Model/.md)|  | [optional]
+ **user** | [**\Swagger\Client\Model\ExternalUserDTO**](../Model/.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -271,7 +269,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **login**
-> \Swagger\Client\Model\ServiceResult login($user, $pass)
+> \Swagger\Client\Model\ServiceResultWrapper login($user, $pass)
 
 
 
@@ -308,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 

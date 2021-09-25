@@ -1,0 +1,9 @@
+# UserSearchResultWrapper
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**user_search_result** | [**\Swagger\Client\Model\UserSearchResult**](UserSearchResult.md) |  | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

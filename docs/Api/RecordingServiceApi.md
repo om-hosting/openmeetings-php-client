@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**getExternalByType**](RecordingServiceApi.md#getexternalbytype) | **GET** /record/{externaltype} | 
 
 # **delete3**
-> \Swagger\Client\Model\ServiceResult delete3($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete3($sid, $id)
 
 
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getExternal**
-> \Swagger\Client\Model\RecordingDTO[] getExternal($sid, $externaltype, $externalid)
+> \Swagger\Client\Model\RecordingDTOListWrapper getExternal($sid, $externaltype, $externalid)
 
 
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RecordingDTO[]**](../Model/RecordingDTO.md)
+[**\Swagger\Client\Model\RecordingDTOListWrapper**](../Model/RecordingDTOListWrapper.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getExternalByRoom**
-> \Swagger\Client\Model\RecordingDTO[] getExternalByRoom($sid, $roomid)
+> \Swagger\Client\Model\RecordingDTOListWrapper getExternalByRoom($sid, $roomid)
 
 
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RecordingDTO[]**](../Model/RecordingDTO.md)
+[**\Swagger\Client\Model\RecordingDTOListWrapper**](../Model/RecordingDTOListWrapper.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getExternalByType**
-> \Swagger\Client\Model\RecordingDTO[] getExternalByType($sid, $externaltype)
+> \Swagger\Client\Model\RecordingDTOListWrapper getExternalByType($sid, $externaltype)
 
 
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RecordingDTO[]**](../Model/RecordingDTO.md)
+[**\Swagger\Client\Model\RecordingDTOListWrapper**](../Model/RecordingDTOListWrapper.md)
 
 ### Authorization
 

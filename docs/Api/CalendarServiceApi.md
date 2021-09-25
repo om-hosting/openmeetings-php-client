@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**save**](CalendarServiceApi.md#save) | **POST** /calendar | 
 
 # **delete**
-> \Swagger\Client\Model\ServiceResult delete($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete($sid, $id)
 
 
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getByRoom**
-> \Swagger\Client\Model\AppointmentDTO getByRoom($sid, $roomid)
+> \Swagger\Client\Model\AppointmentDTOWrapper getByRoom($sid, $roomid)
 
 
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOWrapper**](../Model/AppointmentDTOWrapper.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getByTitle**
-> \Swagger\Client\Model\AppointmentDTO[] getByTitle($sid, $title)
+> \Swagger\Client\Model\AppointmentDTOListWrapper getByTitle($sid, $title)
 
 
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO[]**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOListWrapper**](../Model/AppointmentDTOListWrapper.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **next**
-> \Swagger\Client\Model\AppointmentDTO next($sid)
+> \Swagger\Client\Model\AppointmentDTOWrapper next($sid)
 
 
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOWrapper**](../Model/AppointmentDTOWrapper.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **nextForUser**
-> \Swagger\Client\Model\AppointmentDTO nextForUser($sid, $userid)
+> \Swagger\Client\Model\AppointmentDTOWrapper nextForUser($sid, $userid)
 
 
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOWrapper**](../Model/AppointmentDTOWrapper.md)
 
 ### Authorization
 
@@ -267,7 +267,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **range**
-> \Swagger\Client\Model\AppointmentDTO[] range($sid, $start, $end)
+> \Swagger\Client\Model\AppointmentDTOListWrapper range($sid, $start, $end)
 
 
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO[]**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOListWrapper**](../Model/AppointmentDTOListWrapper.md)
 
 ### Authorization
 
@@ -320,7 +320,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **rangeForUser**
-> \Swagger\Client\Model\AppointmentDTO[] rangeForUser($sid, $userid, $start, $end)
+> \Swagger\Client\Model\AppointmentDTOListWrapper rangeForUser($sid, $userid, $start, $end)
 
 
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO[]**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOListWrapper**](../Model/AppointmentDTOListWrapper.md)
 
 ### Authorization
 
@@ -375,7 +375,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **save**
-> \Swagger\Client\Model\AppointmentDTO save($sid, $appointment)
+> \Swagger\Client\Model\AppointmentDTOWrapper save($sid, $body)
 
 
 
@@ -392,10 +392,10 @@ $apiInstance = new Swagger\Client\Api\CalendarServiceApi(
     new GuzzleHttp\Client()
 );
 $sid = "sid_example"; // string | The SID of the User. This SID must be marked as Loggedin
-$appointment = new \Swagger\Client\Model\AppointmentDTO(); // \Swagger\Client\Model\AppointmentDTO | 
+$body = new \Swagger\Client\Model\CalendarBody(); // \Swagger\Client\Model\CalendarBody | 
 
 try {
-    $result = $apiInstance->save($sid, $appointment);
+    $result = $apiInstance->save($sid, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CalendarServiceApi->save: ', $e->getMessage(), PHP_EOL;
@@ -408,11 +408,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sid** | **string**| The SID of the User. This SID must be marked as Loggedin |
- **appointment** | [**\Swagger\Client\Model\AppointmentDTO**](../Model/.md)|  | [optional]
+ **body** | [**\Swagger\Client\Model\CalendarBody**](../Model/CalendarBody.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\AppointmentDTO**](../Model/AppointmentDTO.md)
+[**\Swagger\Client\Model\AppointmentDTOWrapper**](../Model/AppointmentDTOWrapper.md)
 
 ### Authorization
 
@@ -420,7 +420,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

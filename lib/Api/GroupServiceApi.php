@@ -94,7 +94,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function add1($sid, $name)
     {
@@ -110,11 +110,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function add1WithHttpInfo($sid, $name)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->add1Request($sid, $name);
 
         try {
@@ -166,7 +166,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -210,7 +210,7 @@ class GroupServiceApi
      */
     public function add1AsyncWithHttpInfo($sid, $name)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->add1Request($sid, $name);
 
         return $this->client
@@ -364,7 +364,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function addRoom($sid, $id, $roomid)
     {
@@ -381,11 +381,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function addRoomWithHttpInfo($sid, $id, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->addRoomRequest($sid, $id, $roomid);
 
         try {
@@ -437,7 +437,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -483,7 +483,7 @@ class GroupServiceApi
      */
     public function addRoomAsyncWithHttpInfo($sid, $id, $roomid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->addRoomRequest($sid, $id, $roomid);
 
         return $this->client
@@ -656,7 +656,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function addUser($sid, $id, $userid)
     {
@@ -673,11 +673,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function addUserWithHttpInfo($sid, $id, $userid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->addUserRequest($sid, $id, $userid);
 
         try {
@@ -729,7 +729,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -775,7 +775,7 @@ class GroupServiceApi
      */
     public function addUserAsyncWithHttpInfo($sid, $id, $userid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->addUserRequest($sid, $id, $userid);
 
         return $this->client
@@ -947,7 +947,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function delete2($sid, $id)
     {
@@ -963,11 +963,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function delete2WithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete2Request($sid, $id);
 
         try {
@@ -1019,7 +1019,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1063,7 +1063,7 @@ class GroupServiceApi
      */
     public function delete2AsyncWithHttpInfo($sid, $id)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->delete2Request($sid, $id);
 
         return $this->client
@@ -1219,7 +1219,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\GroupDTO[]
+     * @return \Swagger\Client\Model\GroupDTOListWrapper
      */
     public function get1($sid)
     {
@@ -1234,11 +1234,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\GroupDTO[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\GroupDTOListWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function get1WithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\GroupDTO[]';
+        $returnType = '\Swagger\Client\Model\GroupDTOListWrapper';
         $request = $this->get1Request($sid);
 
         try {
@@ -1290,7 +1290,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\GroupDTO[]',
+                        '\Swagger\Client\Model\GroupDTOListWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1332,7 +1332,7 @@ class GroupServiceApi
      */
     public function get1AsyncWithHttpInfo($sid)
     {
-        $returnType = '\Swagger\Client\Model\GroupDTO[]';
+        $returnType = '\Swagger\Client\Model\GroupDTOListWrapper';
         $request = $this->get1Request($sid);
 
         return $this->client
@@ -1478,7 +1478,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\UserSearchResult
+     * @return \Swagger\Client\Model\UserSearchResultWrapper
      */
     public function getUsers($sid, $id, $start, $max, $orderby, $asc)
     {
@@ -1498,11 +1498,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\UserSearchResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UserSearchResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo($sid, $id, $start, $max, $orderby, $asc)
     {
-        $returnType = '\Swagger\Client\Model\UserSearchResult';
+        $returnType = '\Swagger\Client\Model\UserSearchResultWrapper';
         $request = $this->getUsersRequest($sid, $id, $start, $max, $orderby, $asc);
 
         try {
@@ -1554,7 +1554,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\UserSearchResult',
+                        '\Swagger\Client\Model\UserSearchResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1606,7 +1606,7 @@ class GroupServiceApi
      */
     public function getUsersAsyncWithHttpInfo($sid, $id, $start, $max, $orderby, $asc)
     {
-        $returnType = '\Swagger\Client\Model\UserSearchResult';
+        $returnType = '\Swagger\Client\Model\UserSearchResultWrapper';
         $request = $this->getUsersRequest($sid, $id, $start, $max, $orderby, $asc);
 
         return $this->client
@@ -1808,7 +1808,7 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ServiceResult
+     * @return \Swagger\Client\Model\ServiceResultWrapper
      */
     public function removeUser($sid, $id, $userid)
     {
@@ -1825,11 +1825,11 @@ class GroupServiceApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ServiceResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ServiceResultWrapper, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeUserWithHttpInfo($sid, $id, $userid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->removeUserRequest($sid, $id, $userid);
 
         try {
@@ -1881,7 +1881,7 @@ class GroupServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ServiceResult',
+                        '\Swagger\Client\Model\ServiceResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1927,7 +1927,7 @@ class GroupServiceApi
      */
     public function removeUserAsyncWithHttpInfo($sid, $id, $userid)
     {
-        $returnType = '\Swagger\Client\Model\ServiceResult';
+        $returnType = '\Swagger\Client\Model\ServiceResultWrapper';
         $request = $this->removeUserRequest($sid, $id, $userid);
 
         return $this->client

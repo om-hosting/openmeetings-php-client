@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**users**](RoomServiceApi.md#users) | **GET** /room/users/{roomid} | 
 
 # **add2**
-> \Swagger\Client\Model\RoomDTO add2($sid, $room)
+> \Swagger\Client\Model\RoomDTOWrapper add2($sid, $body)
 
 
 
@@ -36,10 +36,10 @@ $apiInstance = new Swagger\Client\Api\RoomServiceApi(
     new GuzzleHttp\Client()
 );
 $sid = "sid_example"; // string | The SID of the User. This SID must be marked as Loggedin
-$room = new \Swagger\Client\Model\RoomDTO(); // \Swagger\Client\Model\RoomDTO | 
+$body = new \Swagger\Client\Model\RoomBody(); // \Swagger\Client\Model\RoomBody | 
 
 try {
-    $result = $apiInstance->add2($sid, $room);
+    $result = $apiInstance->add2($sid, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoomServiceApi->add2: ', $e->getMessage(), PHP_EOL;
@@ -52,11 +52,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sid** | **string**| The SID of the User. This SID must be marked as Loggedin |
- **room** | [**\Swagger\Client\Model\RoomDTO**](../Model/.md)|  | [optional]
+ **body** | [**\Swagger\Client\Model\RoomBody**](../Model/RoomBody.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\RoomDTO**](../Model/RoomDTO.md)
+[**\Swagger\Client\Model\RoomDTOWrapper**](../Model/RoomDTOWrapper.md)
 
 ### Authorization
 
@@ -64,13 +64,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **cleanWb**
-> \Swagger\Client\Model\ServiceResult cleanWb($id, $sid)
+> \Swagger\Client\Model\ServiceResultWrapper cleanWb($id, $sid)
 
 
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -121,7 +121,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **close**
-> \Swagger\Client\Model\ServiceResult close($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper close($sid, $id)
 
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **count**
-> \Swagger\Client\Model\ServiceResult count($sid, $roomid)
+> \Swagger\Client\Model\ServiceResultWrapper count($sid, $roomid)
 
 
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **delete4**
-> \Swagger\Client\Model\ServiceResult delete4($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper delete4($sid, $id)
 
 
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -274,7 +274,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getExternal1**
-> \Swagger\Client\Model\RoomDTO getExternal1($sid, $type, $externaltype, $externalid, $room)
+> \Swagger\Client\Model\RoomDTOWrapper getExternal1($sid, $type, $externaltype, $externalid, $room)
 
 
 
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RoomDTO**](../Model/RoomDTO.md)
+[**\Swagger\Client\Model\RoomDTOWrapper**](../Model/RoomDTOWrapper.md)
 
 ### Authorization
 
@@ -331,7 +331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPublic**
-> \Swagger\Client\Model\RoomDTO[] getPublic($sid, $type)
+> \Swagger\Client\Model\RoomDTOListWrapper getPublic($sid, $type)
 
 
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RoomDTO[]**](../Model/RoomDTO.md)
+[**\Swagger\Client\Model\RoomDTOListWrapper**](../Model/RoomDTOListWrapper.md)
 
 ### Authorization
 
@@ -382,7 +382,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRoomById**
-> \Swagger\Client\Model\RoomDTO getRoomById($sid, $id)
+> \Swagger\Client\Model\RoomDTOWrapper getRoomById($sid, $id)
 
 
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RoomDTO**](../Model/RoomDTO.md)
+[**\Swagger\Client\Model\RoomDTOWrapper**](../Model/RoomDTOWrapper.md)
 
 ### Authorization
 
@@ -433,7 +433,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **hash**
-> \Swagger\Client\Model\ServiceResult hash($sid, $invite, $sendmail)
+> \Swagger\Client\Model\ServiceResultWrapper hash($sid, $invite, $sendmail)
 
 
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -486,7 +486,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **kick**
-> \Swagger\Client\Model\ServiceResult kick($sid, $id, $external_type, $external_id)
+> \Swagger\Client\Model\ServiceResultWrapper kick($sid, $id, $external_type, $external_id)
 
 
 
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **kickAll**
-> \Swagger\Client\Model\ServiceResult kickAll($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper kickAll($sid, $id)
 
 
 
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -592,7 +592,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **open**
-> \Swagger\Client\Model\ServiceResult open($sid, $id)
+> \Swagger\Client\Model\ServiceResultWrapper open($sid, $id)
 
 
 
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ServiceResult**](../Model/ServiceResult.md)
+[**\Swagger\Client\Model\ServiceResultWrapper**](../Model/ServiceResultWrapper.md)
 
 ### Authorization
 
@@ -643,7 +643,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **users**
-> \Swagger\Client\Model\UserDTO[] users($sid, $roomid)
+> \Swagger\Client\Model\UserDTOListWrapper users($sid, $roomid)
 
 
 
@@ -680,7 +680,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\UserDTO[]**](../Model/UserDTO.md)
+[**\Swagger\Client\Model\UserDTOListWrapper**](../Model/UserDTOListWrapper.md)
 
 ### Authorization
 
