@@ -9,6 +9,10 @@ PHP composer managed package to connect to OpenMeetings REST API (https://openme
 
 See also: https://packagist.org/packages/om-hosting/openmeetings-php-client
 
+## Example use case
+
+See the example use case at: https://om-hosting.com/openmeetings-integration-php-composer/
+
 ## Installation
 
 Install packagist package:
