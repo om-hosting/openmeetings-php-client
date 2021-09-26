@@ -5,12 +5,15 @@
 ![Packagist Version](https://img.shields.io/packagist/v/om-hosting/openmeetings-php-client)
 ![Packagist Downloads](https://img.shields.io/packagist/dm/om-hosting/openmeetings-php-client)
 
-PHP composer managed package to connect to OpenMeetings REST API, see also: https://openmeetings.apache.org/swagger/
+PHP composer managed package to connect to OpenMeetings REST API.
+
+see also: 
+ * https://packagist.org/packages/om-hosting/openmeetings-php-client
+ * https://openmeetings.apache.org/swagger/
 
 ## Installation
 
-See: https://packagist.org/packages/om-hosting/openmeetings-php-client
-
+Install packagist package:
 ```bash
 php composer.phar install openmeetings-php-client
 ```
