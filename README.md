@@ -1,5 +1,65 @@
 # openmeetings-php-client
 
+![Packagist License](https://img.shields.io/packagist/l/om-hosting/openmeetings-php-client)
+![GitHub issues](https://img.shields.io/github/issues/om-hosting/openmeetings-php-client)
+![Packagist Version](https://img.shields.io/packagist/v/om-hosting/openmeetings-php-client)
+![Packagist Downloads](https://img.shields.io/packagist/dm/om-hosting/openmeetings-php-client)
+
+PHP composer managed package to connect to OpenMeetings REST API, see also: https://openmeetings.apache.org/swagger/
+
+## Installation
+
+See: https://packagist.org/packages/om-hosting/openmeetings-php-client
+
+```bash
+php composer.phar install openmeetings-php-client
+```
+
+Usage:
+Example usage:
+```php
+        $BASE_URL = "http://localhost:5080/openmeetings";
+    
+        //1. Login to service
+        $config = new Configuration();
+        $config->setHost($BASE_URL . '/services');
+        $userApiInstance = new UserServiceApi(null, $config);
+        $serviceResultLoginWrapper = $userApiInstance->login("soapuser", "!HansHans1");
+        if ($serviceResultLoginWrapper->getServiceResult()->getType() != "SUCCESS") {
+            $text = "Login Failed " . $serviceResultLoginWrapper->getServiceResult()->getMessage();
+            return view('hello_index', ['text' => $text]);
+        }
+        $sid = $serviceResultLoginWrapper->getServiceResult()->getMessage();
+
+        // 2. Generate Hash for entering a conference room
+        $serviceResultHashWrapper = $userApiInstance->getRoomHash($sid,
+            new ExternalUserDTO(
+                array(
+                    "firstname" => "John",
+                    "lastname" => "Doe",
+                    "external_id" => "uniqueId1",
+                    "external_type" => "myCMS",
+                    "login" => "john.doe",
+                    "email" => "john.doe@gmail.com"
+                )
+            ),
+            new RoomOptionsDTO(
+                array(
+                    "room_id" => 2,
+                    "moderator" => true
+                )
+            )
+        );
+
+        // 3. Construct Login URL
+        $hash = $serviceResultHashWrapper->getServiceResult()->getMessage();
+        $url = $this->BASE_URL . "/hash?secure=".$hash;
+```
+
+See also example project code at: https://github.com/om-hosting/openmeetings-php-laravel-sample-project
+
+## Description
+
 Integration API enables to connect to an OpenMeetings instance, eg for generating users, create links to directly access conference rooms.<br/><br/>         
 
 <b>It is mainly designed for Server2Server integration, for example to integrate into your website, CMS or 3rd party application</b><br/><br/>         
