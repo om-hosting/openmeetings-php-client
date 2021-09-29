@@ -13,6 +13,13 @@ See also: https://packagist.org/packages/om-hosting/openmeetings-php-client
 
 See the example use case at: https://om-hosting.com/openmeetings-integration-php-composer/
 
+## Version and compatibility
+
+| openmeetings-php-client | description |
+| ------------------------|-------------|
+| version 1.x.x           | Guzzle v 6.x.x |
+| version 2.x.x           | Guzzle v 7.x.x and later |
+
 ## Installation
 
 Install packagist package:
